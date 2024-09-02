@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"script",
+	"author":	"ahb",
+	"description":	{
+		"":	"Export Fusion 360 design to SDF"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
