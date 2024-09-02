@@ -2,6 +2,8 @@
 
 Export [Fusion 360](https://www.autodesk.com/products/fusion-360/) designs to [SDF (Simulation Description Format)](http://sdformat.org/)
 
+![FusionSDF](docs/img/FusionSDF.jpg)
+
 The goal of FusionSDF is to make as few assumptions about the structure of the design as possible and hence avoid restricting it. In the ideal case, exporting the design as an SDF can be an afterthought to completing the design, including components, bodies, joints, physical materials and appearances. The assumptions FusionSDF does make on the design are
 - The top level component only consists of components and joints. Other elements at the top level, e.g. bodies, will be ignored.
 - Every link is a component
