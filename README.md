@@ -11,6 +11,7 @@ The goal of FusionSDF is to make as few assumptions about the structure of the d
 
 The generated SDF can be further optimized with [sdfopt](sdfopt/README.md), e.g. decimating meshes and adding better visual materials.
 
+Also see the [annoucement and discussion on ROS Discourse](https://discourse.ros.org/t/fusionsdf-export-fusion-360-cad-designs-to-sdf/39430) for more information.
 
 ## Installation instructions
 - In Fusion 360: Utilities -> Add-Ins -> Scripts and Add-Ins, Tab "Scripts" (shortcut: Shift + S)
