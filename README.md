@@ -11,6 +11,8 @@ The goal of FusionSDF is to make as few assumptions about the structure of the d
 - Each rigid group corresponds to a single link
 - No use of double underscores "__" in names
 
+If the generated SDF is intended to be used as ROS robot_description or to be converted into a [URDF](https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html), then [additional restrictions apply](https://github.com/ros/sdformat_urdf/blob/rolling/sdformat_urdf/README.md).
+
 The generated SDF can be further optimized with [sdfopt](sdfopt/README.md), e.g. decimating meshes and adding better visual materials.
 
 Also see the [annoucement and discussion on ROS Discourse](https://discourse.ros.org/t/fusionsdf-export-fusion-360-cad-designs-to-sdf/39430) for more information.
