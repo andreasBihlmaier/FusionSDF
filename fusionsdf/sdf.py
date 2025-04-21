@@ -189,7 +189,7 @@ class SDF:
 
     def add_joint(self, fusion_joint: adsk.fusion.Joint, as_built: bool, prefix: str):
         joint_name = prefix + normalize_name(fusion_joint.name)
-        log(f'add_joint: fusion_joint="{fusion_joint.name}"; prefix="{prefix}" -> joint_name="{joint_name}"\n')
+        log(f'add_joint: fusion_joint="{fusion_joint.name}"; as_built={as_built}; prefix="{prefix}" -> joint_name="{joint_name}"\n')
         if joint_name in self.joints:
             log(f'Joint "{joint_name}" already exists, skipping\n')
             return
@@ -235,10 +235,16 @@ class SDF:
                     joint.axis_xyz = [-value for value in joint.axis_xyz]
         if as_built:
             joint_origin = fusion_joint.geometry
+            if joint_origin is not None:
+                joint.pose = Pose(cm_to_m(joint_origin.origin.asArray()), [0, 0, 0])
         else:
-            joint_origin = fusion_joint.geometryOrOriginOne
-        if joint_origin is not None:
-            joint.pose = Pose(cm_to_m(joint_origin.origin.asArray()), [0, 0, 0])
+            # TODO: Understand whether ...Two is always the right one here
+            joint_origin = fusion_joint.geometryOrOriginTwo
+            if joint_origin is not None:
+                if joint_origin.classType() == 'adsk::fusion::JointGeometry':
+                    joint.pose = Pose(cm_to_m(joint_origin.origin.asArray()), [0, 0, 0])
+                else:  # JointOrigin
+                    joint.pose = transform2_to_pose(joint_origin.transform)
 
         self.joints[joint.name] = joint
 
