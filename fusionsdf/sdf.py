@@ -193,6 +193,9 @@ class SDF:
         if joint_name in self.joints:
             log(f'Joint "{joint_name}" already exists, skipping\n')
             return
+        if fusion_joint.occurrenceOne is None or fusion_joint.occurrenceTwo is None:
+            log(f'ERROR: Ignoring joint "{fusion_joint.name}" because one of the occurrences it is connecting is missing (likely it was deleted)\n')
+            return
 
         joint = Joint(joint_name)
         fusion_joint_to_sdf_joint_type = {
